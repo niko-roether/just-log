@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package",
-  "name": "@just-log/node",
+  "name": "just-log-node",
   "version": "0.1.0",
   "type": "module",
   "packageManager": "yarn@4.5.0",
@@ -12,7 +12,7 @@
     "dist"
   ],
   "exports": {
-    "node": "./dist/index.js"
+    ".": "./dist/index.js"
   },
   "dependencies": {
     "just-log": "workspace:^",

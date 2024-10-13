@@ -31,7 +31,7 @@ function formatLogLevel(level: LogLevel): string {
 function formatPrefix(message: LogMessage): string {
 	const level = formatLogLevel(message.level);
 	let prefixText = `[${level}`;
-	if (message.source) prefixText += ` ${message.source}`;
+	if (message.source) prefixText += ` ${pc.white(message.source)}`;
 	prefixText += "]";
 	return pc.blackBright(prefixText);
 }
@@ -150,18 +150,24 @@ export interface InitConfig extends WriterConfig {
 	envVarName?: string;
 }
 
-function mergeConfig(base: WriterConfig, merge: WriterConfig): WriterConfig {
-	return {
+function mergeConfig(base: WriterConfig, ...configs: WriterConfig[]): WriterConfig {
+	const merge = configs.pop();
+	if (!merge) return base;
+	const merged = {
 		maxLevel: merge.maxLevel ?? base.maxLevel,
 		filters: [...(base.filters ?? []), ...(merge.filters ?? [])]
 	}
+	return mergeConfig(merged, ...configs);
 }
 
 const DEFAULT_ENV_VAR_NAME = "LOG_LEVEL";
+const DEFAULT_CONFIG: InitConfig = {
+	maxLevel: LogLevel.INFO
+}
 
-export function init(config?: InitConfig) {
+export default function init(config?: InitConfig) {
 	const envConfig = getEnvConfig(config?.envVarName ?? DEFAULT_ENV_VAR_NAME);
-	const computedConfig = mergeConfig(config ?? {}, envConfig ?? {});
+	const computedConfig = mergeConfig(DEFAULT_CONFIG, config ?? {}, envConfig ?? {});
 	const logWriter = new NodeWriter(computedConfig);
 	registerLogWriter(logWriter);
 }
