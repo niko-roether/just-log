@@ -116,6 +116,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@just-log/node@workspace:packages/just-log-node"
   dependencies:
+    "@types/node": "npm:^22.7.5"
     just-log: "workspace:^"
     picocolors: "npm:^1.1.0"
   languageName: unknown
