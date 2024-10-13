@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "just-log",
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "yarn@4.5.0",
+  "scripts": {
+    "build": "tsc"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  }
+}
