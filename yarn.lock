@@ -119,6 +119,7 @@ __metadata:
     "@types/node": "npm:^22.7.5"
     just-log: "workspace:^"
     picocolors: "npm:^1.1.0"
+    typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -791,6 +792,8 @@ __metadata:
 "just-log@workspace:^, just-log@workspace:packages/just-log":
   version: 0.0.0-use.local
   resolution: "just-log@workspace:packages/just-log"
+  dependencies:
+    typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
 
