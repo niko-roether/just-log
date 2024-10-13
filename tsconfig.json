@@ -10,6 +10,9 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "checkJs": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "packages/**/*.ts",
