@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "just-log-browser",
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "yarn@4.5.0",
+  "scripts": {
+    "prepack": "yarn build",
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "dependencies": {
+    "just-log": "workspace:^"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  }
+}
