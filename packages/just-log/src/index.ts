@@ -35,10 +35,13 @@ export interface LogWriter {
 	write(message: LogMessage): void;
 }
 
-let writer: LogWriter | null = null;
+declare global {
+	// eslint-disable-next-line no-var
+	var __justLogWriter: LogWriter | null;
+}
 
 export function registerLogWriter(w: LogWriter) {
-	writer = w;
+	globalThis.__justLogWriter = w;
 }
 
 const IDENTIFIER_REGEX = /^[a-z0-9_-]+$/i;
@@ -68,7 +71,7 @@ export class Logger {
 		if (level == LogLevel.NONE) {
 			throw new Error(`Cannot write log messages of level NONE`);
 		}
-		writer?.write({
+		globalThis.__justLogWriter?.write({
 			level,
 			text: message,
 			timestamp: new Date(),
