@@ -90,7 +90,6 @@ class BrowserWriter implements LogWriter {
 		if (!this.shouldShowMessage(message)) return;
 		const messageArgs = compileLogParts(formatMessage(message));
 		const handler = getLogHandler(message.level);
-		console.log(JSON.stringify(messageArgs));
 		handler(...messageArgs);
 	}
 }
