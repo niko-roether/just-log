@@ -10,7 +10,7 @@
     "browser"
   ],
   "repository": "github:niko-roether/just-log",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "packageManager": "yarn@4.5.0",
   "scripts": {
