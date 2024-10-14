@@ -25,12 +25,12 @@ logger.error("Error message");
 
 ## Usage in applications
 
-In order to see log messages in your application, you will have to enable a logging adapter.
+In order to see log messages in your application, you will have to enable a log writer.
 Currently supported are:
 - [`@just-log/node`](https://www.npmjs.com/package/@just-log/node)
 - [`@just-log/browser`](https://www.npmjs.com/package/@just-log/browser)
 
-Simply initialize your logging adapter like this:
+Simply initialize your log writer like this:
 
 ```ts
 import log from "@just-log/core";
@@ -45,3 +45,6 @@ logger.info("Info message");
 logger.warning("Warning message");
 logger.error("Error message");
 ```
+
+> [!IMPORTANT]
+> Log messages that are sent before the log writer has been initialized will not be displayed!
