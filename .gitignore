@@ -13,4 +13,4 @@
 .pnp.*
 
 packages/*/dist
-expamples/*/dist
+examples/*/dist
