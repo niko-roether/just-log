@@ -46,5 +46,5 @@ logger.warning("Warning message");
 logger.error("Error message");
 ```
 
-> [!IMPORTANT]
+> # Important
 > Log messages that are sent before the log writer has been initialized will not be displayed!

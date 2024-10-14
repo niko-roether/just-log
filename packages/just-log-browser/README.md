@@ -13,7 +13,7 @@ import initLogwriter from "@just-log/browser"
 initLogWriter();
 ```
 
-> [!IMPORTANT]
+> # Important
 > Log messages that are sent before the log writer has been initialized will not be displayed!
 
 ## Configuration

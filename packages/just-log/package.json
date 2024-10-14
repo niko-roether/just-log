@@ -2,8 +2,15 @@
   "$schema": "https://json.schemastore.org/package",
   "name": "@just-log/core",
   "description": "A generic, environment agnostic logging library for javascript and typescript",
-  "repository": "https://github.com/niko-roether/just-log",
-  "version": "0.1.0",
+  "keywords": [
+    "log",
+    "logger",
+    "simple",
+    "node",
+    "browser"
+  ],
+  "repository": "github:niko-roether/just-log",
+  "version": "0.1.1",
   "type": "module",
   "packageManager": "yarn@4.5.0",
   "scripts": {

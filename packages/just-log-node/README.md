@@ -13,7 +13,7 @@ import initLogwriter from "@just-log/node"
 initLogWriter();
 ```
 
-> [!IMPORTANT]
+> # Important
 > Log messages that are sent before the log writer has been initialized will not be displayed!
 
 ## Configuration

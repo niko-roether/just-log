@@ -1,7 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@just-log/browser",
-  "version": "0.1.0",
+  "description": "A log writer for @just-log/core for browser environments",
+  "repository": "github:niko-roether/just-log",
+  "version": "0.1.1",
   "type": "module",
   "packageManager": "yarn@4.5.0",
   "scripts": {
