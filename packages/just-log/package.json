@@ -1,6 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package",
-  "name": "just-log",
+  "name": "@just-log/core",
+  "description": "A generic, environment agnostic logging library for javascript and typescript",
+  "repository": "https://github.com/niko-roether/just-log",
   "version": "0.1.0",
   "type": "module",
   "packageManager": "yarn@4.5.0",
@@ -11,9 +13,6 @@
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": "./dist/index.js"
-  },
   "devDependencies": {
     "typescript": "^5.6.3"
   }

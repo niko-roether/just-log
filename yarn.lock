@@ -280,6 +280,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@just-log/browser@workspace:^, @just-log/browser@workspace:packages/just-log-browser":
+  version: 0.0.0-use.local
+  resolution: "@just-log/browser@workspace:packages/just-log-browser"
+  dependencies:
+    "@just-log/core": "workspace:^"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
+
+"@just-log/core@workspace:^, @just-log/core@workspace:packages/just-log":
+  version: 0.0.0-use.local
+  resolution: "@just-log/core@workspace:packages/just-log"
+  dependencies:
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
+
+"@just-log/node@workspace:^, @just-log/node@workspace:packages/just-log-node":
+  version: 0.0.0-use.local
+  resolution: "@just-log/node@workspace:packages/just-log-node"
+  dependencies:
+    "@just-log/core": "workspace:^"
+    "@types/node": "npm:^22.7.5"
+    picocolors: "npm:^1.1.0"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -1033,9 +1061,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-browser@workspace:examples/browser"
   dependencies:
+    "@just-log/browser": "workspace:^"
+    "@just-log/core": "workspace:^"
     esbuild: "npm:^0.24.0"
-    just-log: "workspace:^"
-    just-log-browser: "workspace:^"
     tsx-serve: "npm:^1.1.19"
     typescript: "npm:^5.6.3"
   languageName: unknown
@@ -1045,8 +1073,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-node@workspace:examples/node"
   dependencies:
-    just-log: "workspace:^"
-    just-log-node: "workspace:^"
+    "@just-log/core": "workspace:^"
+    "@just-log/node": "workspace:^"
     typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
@@ -1453,26 +1481,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"just-log-browser@workspace:^, just-log-browser@workspace:packages/just-log-browser":
-  version: 0.0.0-use.local
-  resolution: "just-log-browser@workspace:packages/just-log-browser"
-  dependencies:
-    just-log: "workspace:^"
-    typescript: "npm:^5.6.3"
-  languageName: unknown
-  linkType: soft
-
-"just-log-node@workspace:^, just-log-node@workspace:packages/just-log-node":
-  version: 0.0.0-use.local
-  resolution: "just-log-node@workspace:packages/just-log-node"
-  dependencies:
-    "@types/node": "npm:^22.7.5"
-    just-log: "workspace:^"
-    picocolors: "npm:^1.1.0"
-    typescript: "npm:^5.6.3"
-  languageName: unknown
-  linkType: soft
-
 "just-log-project@workspace:.":
   version: 0.0.0-use.local
   resolution: "just-log-project@workspace:."
@@ -1482,14 +1490,6 @@ __metadata:
     eslint: "npm:^9.12.0"
     typescript: "npm:^5.6.3"
     typescript-eslint: "npm:^8.8.1"
-  languageName: unknown
-  linkType: soft
-
-"just-log@workspace:^, just-log@workspace:packages/just-log":
-  version: 0.0.0-use.local
-  resolution: "just-log@workspace:packages/just-log"
-  dependencies:
-    typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
 

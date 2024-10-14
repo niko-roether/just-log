@@ -1,5 +1,5 @@
 import pc from "picocolors";
-import { LogLevel, LogMessage, LogWriter, registerLogWriter } from "just-log";
+import { LogLevel, LogMessage, LogWriter, registerLogWriter } from "@just-log/core";
 
 interface WriterFilter {
 	matcher: string,
@@ -165,7 +165,7 @@ const DEFAULT_CONFIG: InitConfig = {
 	maxLevel: LogLevel.INFO
 }
 
-export default function init(config?: InitConfig) {
+export default function initLogWriter(config?: InitConfig) {
 	const envConfig = getEnvConfig(config?.envVarName ?? DEFAULT_ENV_VAR_NAME);
 	const computedConfig = mergeConfig(DEFAULT_CONFIG, config ?? {}, envConfig ?? {});
 	const logWriter = new NodeWriter(computedConfig);

@@ -1,5 +1,5 @@
-import log from "just-log";
-import initLog from "just-log-browser";
+import log from "@just-log/core";
+import initLog from "@just-log/browser";
 
 initLog();
 

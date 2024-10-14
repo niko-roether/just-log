@@ -1,4 +1,4 @@
-import { LogLevel, LogMessage, LogWriter, registerLogWriter } from "just-log";
+import { LogLevel, LogMessage, LogWriter, registerLogWriter } from "@just-log/core";
 
 interface WriterConfig {
 	maxLevel?: LogLevel;
