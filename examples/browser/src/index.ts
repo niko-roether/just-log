@@ -1,7 +1,7 @@
 import log from "@just-log/core";
-import initLog from "@just-log/browser";
+import initLogWriter from "@just-log/browser";
 
-initLog();
+initLogWriter();
 
 const logger = log.sub("example");
 

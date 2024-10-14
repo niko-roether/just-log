@@ -1,8 +1,13 @@
 import { LogLevel, LogMessage, LogWriter, registerLogWriter } from "@just-log/core";
 
+interface WriterFilter {
+	matcher: string,
+	maxLevel: LogLevel
+}
+
 interface WriterConfig {
 	maxLevel?: LogLevel;
-	filters?: Record<string, LogLevel>
+	filters?: WriterFilter[];
 }
 
 type LogHandler = (...args: string[]) => void;
@@ -80,8 +85,8 @@ class BrowserWriter implements LogWriter {
 
 	private shouldShowMessage(message: LogMessage) {
 		let maxLevel = this.config.maxLevel;
-		for (const [matcher, filterMaxLevel] of Object.entries(this.config.filters ?? {})) {
-			if (message.source?.startsWith(matcher)) maxLevel = filterMaxLevel;
+		for (const filter of this.config.filters ?? []) {
+			if (message.source?.startsWith(filter.matcher)) maxLevel = filter.maxLevel;
 		}
 		return !maxLevel || message.level <= maxLevel;
 	}
@@ -99,7 +104,7 @@ function mergeConfig(base: WriterConfig, ...configs: WriterConfig[]): WriterConf
 	if (!merge) return base;
 	const merged = {
 		maxLevel: merge.maxLevel ?? base.maxLevel,
-		filters: Object.assign(base.filters ?? {}, merge.filters ?? {})
+		filters: [...(base.filters ?? []), ...(merge.filters ?? [])]
 	}
 	return mergeConfig(merged, ...configs);
 }
@@ -110,7 +115,7 @@ const DEFAULT_CONFIG: InitConfig = {
 	maxLevel: LogLevel.DEBUG
 }
 
-export default function init(config?: InitConfig) {
+export default function initLogWriter(config?: InitConfig) {
 	const computedConfig = mergeConfig(DEFAULT_CONFIG, config ?? {});
 	const logWriter = new BrowserWriter(computedConfig);
 	registerLogWriter(logWriter);
