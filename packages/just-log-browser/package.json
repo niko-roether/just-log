@@ -3,7 +3,7 @@
   "name": "@just-log/browser",
   "description": "A log writer for @just-log/core for browser environments",
   "repository": "github:niko-roether/just-log",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "packageManager": "yarn@4.5.0",
   "scripts": {
@@ -17,6 +17,9 @@
     ".": "./dist/index.js"
   },
   "dependencies": {
+    "@just-log/core": "workspace:^"
+  },
+  "peerDependencies": {
     "@just-log/core": "workspace:^"
   },
   "devDependencies": {
