@@ -11,6 +11,9 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "dependencies": {
     "@just-log/core": "workspace:^"
   },

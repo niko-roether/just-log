@@ -13,6 +13,9 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "devDependencies": {
     "typescript": "^5.6.3"
   }
