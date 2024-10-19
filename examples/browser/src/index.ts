@@ -9,4 +9,4 @@ logger.trace("trace message");
 logger.debug("debug message");
 logger.info("info message");
 logger.warning("warning message");
-logger.error("error message");
+logger.error("error message", new Error("This is an error object"));
