@@ -28,7 +28,8 @@ export interface LogMessage {
 	level: LogLevel,
 	source?: string,
 	timestamp: Date,
-	text: string
+	text: string,
+	error?: Error
 }
 
 export interface LogWriter {
@@ -42,6 +43,10 @@ declare global {
 
 export function registerLogWriter(w: LogWriter) {
 	globalThis.__justLogWriter = w;
+}
+
+function logWriterWrite(message: LogMessage): void {
+	globalThis.__justLogWriter?.write(message);
 }
 
 const IDENTIFIER_REGEX = /^[a-z0-9_-]+$/i;
@@ -67,36 +72,48 @@ export class Logger {
 		return new Logger(...this.source, ...source);
 	}
 
-	public log(level: LogLevel, message: string): void {
+	public log(level: LogLevel, text: string): void {
+		const message = this.createMessage(level, text);
+		logWriterWrite(message);
+	}
+
+	public trace(text: string): void {
+		this.log(LogLevel.TRACE, text);
+	}
+
+	public debug(text: string): void {
+		this.log(LogLevel.DEBUG, text);
+	}
+
+	public info(text: string): void {
+		this.log(LogLevel.INFO, text);
+	}
+
+	public warning(text: string): void {
+		this.log(LogLevel.WARNING, text);
+	}
+
+	public error(text: string, error: unknown = undefined): void {
+		let message;
+		if (error instanceof Error) {
+			message = this.createMessage(LogLevel.ERROR, text, error);
+		} else {
+			message = this.createMessage(LogLevel.ERROR, text);
+		}
+		logWriterWrite(message);
+	}
+
+	private createMessage(level: LogLevel, text: string, error?: Error): LogMessage {
 		if (level == LogLevel.NONE) {
 			throw new Error(`Cannot write log messages of level NONE`);
 		}
-		globalThis.__justLogWriter?.write({
+		return {
 			level,
-			text: message,
+			text: text,
 			timestamp: new Date(),
 			source: this.sourceString,
-		});
-	}
-
-	public trace(message: string): void {
-		this.log(LogLevel.TRACE, message);
-	}
-
-	public debug(message: string): void {
-		this.log(LogLevel.DEBUG, message);
-	}
-
-	public info(message: string): void {
-		this.log(LogLevel.INFO, message);
-	}
-
-	public warning(message: string): void {
-		this.log(LogLevel.WARNING, message);
-	}
-
-	public error(message: string): void {
-		this.log(LogLevel.ERROR, message);
+			error
+		};
 	}
 }
 
