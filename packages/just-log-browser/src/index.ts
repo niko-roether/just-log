@@ -10,7 +10,7 @@ interface WriterConfig {
 	filters?: WriterFilter[];
 }
 
-type LogHandler = (...args: string[]) => void;
+type LogHandler = (...args: unknown[]) => void;
 
 interface LogPart {
 	text: string;
@@ -95,7 +95,11 @@ class BrowserWriter implements LogWriter {
 		if (!this.shouldShowMessage(message)) return;
 		const messageArgs = compileLogParts(formatMessage(message));
 		const handler = getLogHandler(message.level);
-		handler(...messageArgs);
+		if (message.error) {
+			handler(...messageArgs, "\n", message.error);
+		} else {
+			handler(...messageArgs);
+		}
 	}
 }
 

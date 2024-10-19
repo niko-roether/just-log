@@ -54,7 +54,7 @@ function formatMessage(message: LogMessage): string {
 	}
 }
 
-type LogHandler = (message: string) => void;
+type LogHandler = (...args: unknown[]) => void;
 
 function getLogHandler(level: LogLevel): LogHandler {
 	switch (level) {
@@ -87,7 +87,11 @@ class NodeWriter implements LogWriter {
 		if (!this.shouldShowMessage(message)) return;
 		const messageText = formatMessage(message);
 		const handler = getLogHandler(message.level);
-		handler(messageText);
+		if (message.error) {
+			handler(messageText, "\n", message.error);
+		} else {
+			handler(messageText);
+		}
 	}
 }
 
